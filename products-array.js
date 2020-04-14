@@ -12,5 +12,8 @@ export class ProductsArray {
         return this.products;
     }
     // get product images
-
+    getProductImage() {
+        return this.image;
+    }
+    
 }
