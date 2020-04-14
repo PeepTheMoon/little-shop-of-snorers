@@ -13,6 +13,8 @@ const productRadioOne = document.getElementById('input-left');
 const productRadioTwo = document.getElementById('input-center');
 const productRadioThree = document.getElementById('input-right');
 
+//document.querySelector('input[type=radio]:checked').value;
+
 const button = document.getElementById('submit-selection');
 
 // const products = new ProductsArray(productData);
@@ -36,14 +38,13 @@ function displayThreeProducts() {
     
     // make sure each product photo is different
     while (productOne.id === productTwo.id || productTwo.id === productThree.id || productOne.id === productThree.id) {
-        productOne = getRandomProducts();
-        productTwo = getRandomProducts();
+        productOne = getRandomProducts(productData);
+        productTwo = getRandomProducts(productData);
     }
     // display the product photos in HTML side by side
     productImageOne.src = `../assets/${productOne.image}`;
     productImageTwo.src = `../assets/${productTwo.image}`; 
     productImageThree.src = `../assets/${productThree.image}`;
-
 }
 
 button.addEventListener('click', (displayThreeProducts));

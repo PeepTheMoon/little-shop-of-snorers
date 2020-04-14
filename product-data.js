@@ -26,8 +26,8 @@ export const productData = [
     },
     {
         id: 'cthulhu',
-        image: '../assets/cthulu.jpg',
-        name: 'Chtulu' 
+        image: '../assets/cthulhu.jpg',
+        name: 'Chthulhu' 
     },
     {
         id: 'dog-duck',
