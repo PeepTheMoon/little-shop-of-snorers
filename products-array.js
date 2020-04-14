@@ -5,4 +5,5 @@ export class ProductsArray {
     getProducts() {
         return this.products;
     }
+    
 }
