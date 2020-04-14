@@ -35,3 +35,6 @@ new Chart(ctx, {
         }
     }
 });
+
+// change data using dot notation
+// i.e. myChart.data.datasets[0].data = [100, 200, 300, 50, 10];

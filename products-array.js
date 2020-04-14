@@ -1,4 +1,5 @@
-//
+// import productData
+import { productData } from './product-data.js';
 
 export class ProductsArray {
     //constructor that intializes an object within a class
@@ -11,5 +12,5 @@ export class ProductsArray {
         return this.products;
     }
     // get product images
-    
+
 }
