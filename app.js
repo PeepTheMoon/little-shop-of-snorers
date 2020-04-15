@@ -9,18 +9,16 @@ const productImageOne = document.getElementById('image1');
 const productImageTwo = document.getElementById('image2');
 const productImageThree = document.getElementById('image3');
 
-const productRadioOne = document.querySelector('input-left');
-const productRadioTwo = document.querySelector('input-center');
-const productRadioThree = document.querySelector('input-right');
+const productRadioOne = document.getElementById('input-left');
+const productRadioTwo = document.getElementById('input-center');
+const productRadioThree = document.getElementById('input-right');
 
 const radioButtonArray = [productRadioOne, productRadioTwo, productRadioThree];
-
 const button = document.getElementById('submit-selection');
 
 // initialize state
 let userChoice = {};
 let timesDisplayed = 0;
-
 
 // Get 3 random photos from product data array
 function getRandomProducts(dataArray) {
@@ -29,6 +27,7 @@ function getRandomProducts(dataArray) {
     return randomProduct;
 }
 
+//Display the three random photos to the user
 function displayThreeProducts() {
     let productOne = getRandomProducts(productData);
     let productTwo = getRandomProducts(productData);
@@ -45,21 +44,57 @@ function displayThreeProducts() {
     productImageThree.src = `../assets/${productThree.image}`;
 
     // receive clicks for user's choice among the 3 product images
-    radioButtonArray.forEach((radioButton) => {
-        radioButton.addEventListener('click', (event) => {
-            
-            const clickedProduct = event.target.value;
+    radioButtonArray[0].value = productOne.id;
+    radioButtonArray[1].value = productOne.id;
+    radioButtonArray[2].value = productOne.id;
 
-            if (userChoice[clickedProduct]) {
-                userChoice[clickedProduct]++;
-            }
-            else {
-                userChoice[clickedProduct] = 1;
-            }
-        
+    
+    radioButtonArray[0].addEventListener('click', (event) => {
+        const clickedProduct = event.target.value;
 
-        });
+        //increment times user votes for an item
+        if (userChoice[clickedProduct]) {
+            userChoice[clickedProduct]++;
+        }
+        else {
+            userChoice[clickedProduct] = 1;
+        } 
     });
+
+    radioButtonArray[1].addEventListener('click', (event) => {
+        const clickedProduct = event.target.value;
+
+        //increment times user votes for an item
+        if (userChoice[clickedProduct]) {
+            userChoice[clickedProduct]++;
+        }
+        else {
+            userChoice[clickedProduct] = 1;
+        } 
+    });
+
+    radioButtonArray[2].addEventListener('click', (event) => {
+        const clickedProduct = event.target.value;
+
+        //increment times user votes for an item
+        if (userChoice[clickedProduct]) {
+            userChoice[clickedProduct]++;
+        }
+        else {
+            userChoice[clickedProduct] = 1;
+        } 
+    });
+        // track how many times each image is displayed for a single session using local storage
+    // productImageOne.forEach((timesDisplayed) => {
+    //     let timesDisplayed 
+
+    //     })
+            // should restart individual sessions on each page load.
+
+            // navigate user to results page after 25 selections have been made showing list of products with times viewed and votes received
+
+//         });
+//     });
 }
 
 function findById(array, id) {
@@ -74,25 +109,19 @@ function findById(array, id) {
     }
     return foundArrayItem;
     // returns null if no answer is found
+
 }
 //Submit Selection button event listener
 button.addEventListener('click', (displayThreeProducts));
 
 displayThreeProducts();
 
-
-// track how many times each image is displayed for a single session using local storage
-    // should restart individual sessions on each page load.
-
 // 3 new non-duplicating images should load automatically after each click
     // STRETCH to be sure no images duplicate with any that came immediately before.  
         // layer this in after first part is working
 
 // STRETCH to include all sessions stored in local storage to display all time results
-
-// navigate user to results page after 25 selections have been made showing list of products with times viewed and votes received
-
 // make all time results a seperate page that:
     // Retrieves the all-time results (all sessions) from localStorage
     // Iterates through the session results and creates grand totals
-    // Displays list of all-time results.
+    // Displays list of all-time results

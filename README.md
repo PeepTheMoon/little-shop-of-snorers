@@ -1,5 +1,3 @@
-# little-shop-of-snorers
-
 Assignment Overview: Lab 11
 Terrible Novelty Gift Shop Survey App!
 Little Shop of "Snore"ers
@@ -11,17 +9,62 @@ Requirements/Guidance
 This is an individual assignment. You will do planning together in groups, but you will code and submit your own app. Use the group wireframes as a guide, but feel free to carve your own path if you like.
 
 You'll need data that describes the products. Include:
+
 an id that uniquely identifies each product
 an image property that is the path to image to display
 a name property that is the product name to display
 The thing you want to build today will select three random photos from the available product images and display them side-by-side-by-side in the browser window.
-In addition, you'll want to be able to receive clicks on those displayed images, and track those clicks for each image. You'll also want to track how many times each image is displayed, for statistical purposes. Do this for:
+
+In addition, you'll want to be able to receive clicks on those displayed images, and track those clicks for each image. You'll also want to track how many times each image is displayed, for statistical purposes.
+
+Do this for:
 A single, individual user session
 STRETCH: Add the session to an array of all sessions stored in local storage. This can be used to report on all-time results
+We need the id the user clicked! Add an event listener to get user input (get the id of the user selection). TWO OPTIONS:
+form.addEventListener('submit', (event) => {})
+event.preventDefault() If you don't prevent default, it will refresh the page and change the URL
+const myFormData = new FormData(myHTMLForm) Instantiate the formData object
+myFormData.get('someField') Get items off the form data using the name of the field and the get method
+radioInputSUBMITBUTTON.addEventListener('click', (e) => {})
+const theSelectedRadioButton = docuement.querySelector('input[type="radio"]:checked')
+const id = theSelectedRadioButton.value we have set the id to the value, so now we can get it off the radio button element. (MENTAL NOTE: I BETTER PUT A .value ON THE RADIO BUTTON)
+We need to increment the votes for the item that the user clicked.
+We use the id, collected above, and go into our votes array, and increment the votes for the item that has that id
+First we need to check if we have an array of votes
+If that array is in local storage, use it to increment the votes
+Otherwise, create an emtpy array
+Increment the votes if the item is in the array, otherwise, create a new vote item, and increment the votes
+After we increment the votes, stringify the array and save the stringified array in local storage
 Keep in mind that the Individual user session should "restart" on each page load
-Upon receiving a click, three new non-duplicating random images need to be automatically displayed. In other words, the three images that are displayed should contain no duplicates, [AS A STRETCH: nor should they duplicate with any images that we displayed immediately before (you may want to layer in this second requirement after the first is working)].
+
+Upon clicking NEXT, three new non-duplicating random images need to be automatically displayed. In other words, the three images that are displayed should contain no duplicates, [AS A STRETCH: nor should they duplicate with any images that we displayed immediately before (you may want to layer in this second requirement after the first is working)]. And we should increment the viewed of these images
+
+When the user clicks next, make three new product options at random
+Get the products array, and pick three random procuts
+Pick a three random indexes between 0 and the length of the products array
+Use a while loop, keep picking random indexes until we're sure they're all different
+Now that we have three DIFFERENT product indexes, get those products from the products array
+Use the product data:
+Get all the radioButtons with document.querySelectorAll('input')
+Give radio buttons the right value
+Radio buttons: radioButtons[0].value = randomProduct1.id (do this 3 times)
+Get all the images with document.querySelectorAll('img')
+Give images the right src to get the images to show up
+const image1 = imageElements[0];
+Images: image1.src = randomProduct1.image (do this 3 times)
+// alternatively how i would actually do it in EXPERT MODE document.querySelectorAll('img').forEach((img, i) => { img.src = randomProducts[i].image })
+Increment the timesViewed of our three random products
+incrementTimesViewed(randomProduct1)
+incrementTimesViewed(randomProduct2)
+incrementTimesViewed(randomProduct3)
+After we increment the timesViewed, store the changes in local storage
+Increment the total selections. If it's greater than 25, send them to the results page
+increase their timesViewed
+
 After 25 selections have been made, navigate the user to the reults page and display a list of the products with times viewed and votes received. You do not need to display products that were not viewed.
+
 Create a separate page that:
+
 Retrieves the all-time results (all sessions) from localStorage
 Iterates through the session results and creates grand totals
 Displays list of all-time results.
