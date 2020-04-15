@@ -9,19 +9,17 @@ const productImageOne = document.getElementById('image1');
 const productImageTwo = document.getElementById('image2');
 const productImageThree = document.getElementById('image3');
 
-const productRadioOne = document.getElementById('input-left');
-const productRadioTwo = document.getElementById('input-center');
-const productRadioThree = document.getElementById('input-right');
+const productRadioOne = document.querySelector('input-left');
+const productRadioTwo = document.querySelector('input-center');
+const productRadioThree = document.querySelector('input-right');
 
-//document.querySelector('input[type=radio]:checked').value;
+const radioButtonArray = [productRadioOne, productRadioTwo, productRadioThree];
 
 const button = document.getElementById('submit-selection');
 
-// const products = new ProductsArray(productData);
-
 // initialize state
-// let userChoice = 0;
-// let timesDisplayed = 0;
+let userChoice = {};
+let timesDisplayed = 0;
 
 
 // Get 3 random photos from product data array
@@ -45,14 +43,43 @@ function displayThreeProducts() {
     productImageOne.src = `../assets/${productOne.image}`;
     productImageTwo.src = `../assets/${productTwo.image}`; 
     productImageThree.src = `../assets/${productThree.image}`;
+
+    // receive clicks for user's choice among the 3 product images
+    radioButtonArray.forEach((radioButton) => {
+        radioButton.addEventListener('click', (event) => {
+            
+            const clickedProduct = event.target.value;
+
+            if (userChoice[clickedProduct]) {
+                userChoice[clickedProduct]++;
+            }
+            else {
+                userChoice[clickedProduct] = 1;
+            }
+        
+
+        });
+    });
 }
 
+function findById(array, id) {
+    let foundArrayItem;
+    // loops through the cart array
+    for (let i = 0; i < array.length; i++) {
+        const arrayItem = array[i];
+        // returns first item that has an .id property that matches the passed in id.
+        if (arrayItem.id === id) {
+            foundArrayItem = arrayItem;
+        }
+    }
+    return foundArrayItem;
+    // returns null if no answer is found
+}
+//Submit Selection button event listener
 button.addEventListener('click', (displayThreeProducts));
 
 displayThreeProducts();
 
-// receive clicks for user's choice among the 3 product images
-    //Submit Selection button event listener
 
 // track how many times each image is displayed for a single session using local storage
     // should restart individual sessions on each page load.

@@ -1,3 +1,15 @@
+/* #input-left {
+  visibility: hidden;
+}
+
+#input-center {
+  visibility: hidden;
+}
+
+#input-right {
+  visibility: hidden;
+} */
+
 canvas {
     width: 75%;
     height: 500px;
