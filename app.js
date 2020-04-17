@@ -1,5 +1,4 @@
 // use this for any state changes (initializing and updating) and main functionality
-
 // Import original array and array copy .slice()
 import { productData } from './product-data.js';
 import { ProductsArray } from './products-array.js';
@@ -20,7 +19,6 @@ const button = document.getElementById('submit-selection');
 let userChoice = {};
 let timesDisplayed = {};
 let sessions = 0;
-// let answers = 0;
 
 // Get 3 random photos from product data array
 function getRandomProducts(dataArray) {
@@ -113,17 +111,17 @@ function displayThreeProducts() {
 
     // After we increment the votes, stringify the array and save the stringified array in local storage
         // track how many times each image is displayed for a single session using local storage
-            
-    // should restart individual sessions on each page load.
-
-    // navigate user to results page after 25 selections have been made showing list of products with times viewed and votes received
     if (sessions > 6) {
         const stringPicks = JSON.stringify(userChoice);
         const stringTimesDisplayed = JSON.stringify(timesDisplayed);
-        console.log(timesDisplayed);
+
         localStorage.setItem('STRINGPICKS', stringPicks);
         localStorage.setItem('TIMESDISPLAYED', stringTimesDisplayed);
+
+        // navigate user to results page after 25 selections have been made showing list of products with times viewed and votes received
         location.replace('../results/results.html');
+
+        // should restart individual sessions on each page load.
     }
 }
 
@@ -139,8 +137,8 @@ function displayThreeProducts() {
 //     }
 //     return foundArrayItem;
 //     // returns null if no answer is found
-
 // }
+
 //Submit Selection button event listener
 button.addEventListener('click', displayThreeProducts);
 

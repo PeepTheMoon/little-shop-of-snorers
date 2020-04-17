@@ -1,14 +1,30 @@
-const userData = localStorage.getItem('STRINGPICKS', stringPicks);
+const userData = JSON.parse(localStorage.getItem('STRINGPICKS'));
+console.log(userData);
+// no id, just name and clicks.  
+const labelsArray = [];
+const dataArray = [];
+
+for (let i = 0; i < userData.length; i++) {
+    const voteItem = userData[i];
+    // console.log(voteItem);
+    const label = voteItem.id;
+    const dataPoint = voteItem.timesPicked; 
+
+    labelsArray.push(label);
+    dataArray.push(dataPoint);
+}
+// console.log(labelsArray);
+// console.log(dataArray);
 
 
 const ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: labelsArray,
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: dataArray,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -40,4 +56,4 @@ new Chart(ctx, {
 });
 
 // change data using dot notation
-// i.e. myChart.data.datasets[0].data = [100, 200, 300, 50, 10];
+// myChart.data.datasets[0].data = [100, 200, 300, 50, 10];
