@@ -2,16 +2,6 @@ const userData = JSON.parse(localStorage.getItem('STRINGPICKS'));
 const labelsArray = Object.keys(userData);
 const dataArray = Object.values(userData);
 
-// for (let i = 0; i < userData.length; i++) {
-//     const voteItem = userData[i];
-//     // console.log(voteItem);
-//     const label = voteItem.id;
-//     const dataPoint = voteItem.value; 
-
-//     labelsArray.push(label);
-//     dataArray.push(dataPoint);
-// }
-
 const ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',

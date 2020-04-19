@@ -1,6 +1,7 @@
-const allTimeData = JSON.parse(localStorage.getItem('TIMESDISPLAYED'));
-const labelsArray2 = Object.keys(allTimeData);
-const dataArray2 = Object.values(allTimeData);
+const timesDisplayed2 = JSON.parse(localStorage.getItem('TIMESDISPLAYED'));
+
+const labelsArray2 = Object.keys(timesDisplayed2);
+const dataArray2 = Object.values(timesDisplayed2);
 
 const ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {

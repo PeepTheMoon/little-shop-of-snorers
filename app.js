@@ -73,35 +73,39 @@ function displayThreeProducts() {
     radioButtonArray[2].value = productOne.id;
 
     
-    radioButtonArray[0].addEventListener('click', (event) => {
+    radioButtonArray[0].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
         const clickedProduct = event.target.value;
 
-        //increment times user votes for an item
+        // increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            //userChoice[clickedProduct]++;
+            userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
         } 
     });
 
-    radioButtonArray[1].addEventListener('click', (event) => {
+    radioButtonArray[1].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
         const clickedProduct = event.target.value;
 
-        //increment times user votes for an item
+        // increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            //userChoice[clickedProduct]++;
+            userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
         } 
     });
 
-    radioButtonArray[2].addEventListener('click', (event) => {
+    radioButtonArray[2].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
         const clickedProduct = event.target.value;
 
-        //increment times user votes for an item
+        // increment times user votes for an item
         if (userChoice[clickedProduct]) {
+            userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
@@ -110,7 +114,7 @@ function displayThreeProducts() {
 
     // After we increment the votes, stringify the array and save the stringified array in local storage
         // track how many times each image is displayed for a single session using local storage
-    if (sessions > 25) {
+    if (sessions > 8) {
         const stringPicks = JSON.stringify(userChoice);
         const stringTimesDisplayed = JSON.stringify(timesDisplayed);
 
@@ -121,6 +125,8 @@ function displayThreeProducts() {
         location.replace('../results/results.html');
 
         // should restart individual sessions on each page load.
+        userChoice = {};
+        timesDisplayed = {};
     }
 }
 
