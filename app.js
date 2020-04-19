@@ -111,7 +111,7 @@ function displayThreeProducts() {
 
     // After we increment the votes, stringify the array and save the stringified array in local storage
         // track how many times each image is displayed for a single session using local storage
-    if (sessions > 6) {
+    if (sessions > 25) {
         const stringPicks = JSON.stringify(userChoice);
         const stringTimesDisplayed = JSON.stringify(timesDisplayed);
 
