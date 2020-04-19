@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product Survey</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+    <header>
+        <h1>What Gag Gift Would You Buy?</h1>
+        <h2>Make your favorite selection among a choice of 3 products.</h2>
+        <h3>The survey is 25 questions long.</h3>
+    </header>
+    <main>
+        <section id="survey-section">
+
+            <div id="product-choice-container">
+                <label id="product1">
+                    <input width="200" height="200" id="input-left" type="radio" name="product" value="">
+                    <img width="200" height="200" id="image1" src="" alt="">
+                </label>
+                <label id="product2">
+                    <input width="200" height="200" id="input-center" type="radio" name="product" value="">
+                    <img width="200" height="200" id="image2" src="" alt="">
+                </label> 
+                <label id="product3">
+                    <input width="200" height="200" id="input-right" type="radio" name="product" value="">
+                    <img width="200" height="200" id="image3" src="" alt="">
+                </label>
+            </div>
+
+            <div>
+                <button id="submit-selection">Submit Selection</button>
+            </div>
+
+        </section>
+
+        <footer>
+            <a class="session-results-nav" href="../results/results.html">See Single Session Results</a></br>
+            <a class="times-displayed-nav" href="../times-displayed/times-displayed.html">See Session Times Displayed Results</a></br>
+            <a class="all-time-votes-nav" href="../all-time-votes/all-time-votes.html">See All Time Votes Results</a></br>
+            <a class="all-time-displays-nav" href="../all-time-displays/all-time-displays.html">See All Time Displays Results</a>
+        </footer>
+
+    </main>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
