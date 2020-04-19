@@ -1,7 +1,7 @@
 // use this for any state changes (initializing and updating) and main functionality
 // Import original array and array copy .slice()
 import { productData } from './product-data.js';
-import { ProductsArray } from './products-array.js';
+// import { ProductsArray } from './products-array.js';
 
 // Define variables used in HTML and get them with document.getElementById
 const productImageOne = document.getElementById('image1');

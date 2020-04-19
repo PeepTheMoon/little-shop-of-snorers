@@ -1,21 +1,18 @@
 const userData = JSON.parse(localStorage.getItem('STRINGPICKS'));
-console.log(userData);
-// no id, just name and clicks.  
 const labelsArray = [];
 const dataArray = [];
+
+// for loop is not working- userData is.  userData has no 
 
 for (let i = 0; i < userData.length; i++) {
     const voteItem = userData[i];
     // console.log(voteItem);
     const label = voteItem.id;
-    const dataPoint = voteItem.timesPicked; 
+    const dataPoint = voteItem.value; 
 
     labelsArray.push(label);
     dataArray.push(dataPoint);
 }
-// console.log(labelsArray);
-// console.log(dataArray);
-
 
 const ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {
