@@ -14,11 +14,14 @@ const productRadioThree = document.getElementById('input-right');
 
 const radioButtonArray = [productRadioOne, productRadioTwo, productRadioThree];
 const button = document.getElementById('submit-selection');
+// const form = document.getElementById('survey-section');
 
 // initialize state
 let userChoice = {};
 let timesDisplayed = {};
 let sessions = 0;
+let allTimeChoices = {};
+let allTimeDisplays = {};
 
 // Get 3 random photos from product data array
 function getRandomProducts(dataArray) {
@@ -62,6 +65,29 @@ function displayThreeProducts() {
         timesDisplayed[productThree.id] = 1;
     } 
 
+     // Increments AllTimesDisplays here:
+    if (allTimeDisplays[productOne.id]) {
+        allTimeDisplays[productOne.id]++;
+    }
+    else {
+        allTimeDisplays[productOne.id] = 1;
+    }
+    
+    if (allTimeDisplays[productTwo.id]) {
+        allTimeDisplays[productTwo.id]++;
+    }
+    else {
+        allTimeDisplays[productTwo.id] = 1;
+    } 
+
+    if (allTimeDisplays[productThree.id]) {
+        allTimeDisplays[productThree.id]++;
+    }
+    else {
+        allTimeDisplays[productThree.id] = 1;
+    }
+
+
     // display the product photos in HTML side by side
     productImageOne.src = `../assets/${productOne.image}`;
     productImageTwo.src = `../assets/${productTwo.image}`; 
@@ -72,14 +98,15 @@ function displayThreeProducts() {
     radioButtonArray[1].value = productOne.id;
     radioButtonArray[2].value = productOne.id;
 
-    
+    //increment userChoice
+
     radioButtonArray[0].addEventListener('click', () => {
         // const clickedProduct = document.querySelector('input:checked');
         const clickedProduct = event.target.value;
 
         // increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            userChoice[clickedProduct]++;
+            // userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
@@ -92,7 +119,7 @@ function displayThreeProducts() {
 
         // increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            userChoice[clickedProduct]++;
+            // userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
@@ -105,21 +132,65 @@ function displayThreeProducts() {
 
         // increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            userChoice[clickedProduct]++;
+            // userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
         } 
     });
 
+// increment all time choices
+    radioButtonArray[0].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
+        const clickedProduct = event.target.value;
+
+        // increment times user votes for an item
+        if (allTimeChoices[clickedProduct]) {
+            allTimeChoices[clickedProduct]++;
+        }
+        else {
+            allTimeChoices[clickedProduct] = 1;
+        } 
+    });
+
+    radioButtonArray[1].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
+        const clickedProduct = event.target.value;
+
+        // increment times user votes for an item
+        if (allTimeChoices[clickedProduct]) {
+            allTimeChoices[clickedProduct]++;
+        }
+        else {
+            allTimeChoices[clickedProduct] = 1;
+        } 
+    });
+
+    radioButtonArray[2].addEventListener('click', () => {
+        // const clickedProduct = document.querySelector('input:checked');
+        const clickedProduct = event.target.value;
+
+        // increment times user votes for an item
+        if (allTimeChoices[clickedProduct]) {
+            allTimeChoices[clickedProduct]++;
+        }
+        else {
+            allTimeChoices[clickedProduct] = 1;
+        } 
+    });
+
     // After we increment the votes, stringify the array and save the stringified array in local storage
         // track how many times each image is displayed for a single session using local storage
-    if (sessions > 8) {
+    if (sessions > 4) {
         const stringPicks = JSON.stringify(userChoice);
         const stringTimesDisplayed = JSON.stringify(timesDisplayed);
+        const stringAllTimeDisplays = JSON.stringify(allTimeDisplays);
+        const stringAllTimeChoices = JSON.stringify(allTimeChoices);
 
         localStorage.setItem('STRINGPICKS', stringPicks);
         localStorage.setItem('TIMESDISPLAYED', stringTimesDisplayed);
+        localStorage.setItem('ALLTIMECHOICES', stringAllTimeChoices);
+        localStorage.setItem('ALLTIMEDISPLAYS', stringAllTimeDisplays);
 
         // navigate user to results page after 25 selections have been made showing list of products with times viewed and votes received
         location.replace('../results/results.html');
