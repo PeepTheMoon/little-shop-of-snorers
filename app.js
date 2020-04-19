@@ -65,7 +65,7 @@ function displayThreeProducts() {
         timesDisplayed[productThree.id] = 1;
     } 
 
-     // Increments AllTimesDisplays here:
+     // Increments allTimesDisplays here: (something isn't working)
     if (allTimeDisplays[productOne.id]) {
         allTimeDisplays[productOne.id]++;
     }
