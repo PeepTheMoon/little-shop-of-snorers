@@ -1,25 +1,15 @@
-const userData = JSON.parse(localStorage.getItem('STRINGPICKS'));
-const labelsArray = Object.keys(userData);
-const dataArray = Object.values(userData);
-
-// for (let i = 0; i < userData.length; i++) {
-//     const voteItem = userData[i];
-//     // console.log(voteItem);
-//     const label = voteItem.id;
-//     const dataPoint = voteItem.value; 
-
-//     labelsArray.push(label);
-//     dataArray.push(dataPoint);
-// }
+const allTimeData = JSON.parse(localStorage.getItem('TIMESDISPLAYED'));
+const labelsArray2 = Object.keys(allTimeData);
+const dataArray2 = Object.values(allTimeData);
 
 const ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: labelsArray,
+        labels: labelsArray2,
         datasets: [{
             label: '# of Votes',
-            data: dataArray,
+            data: dataArray2,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

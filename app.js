@@ -102,7 +102,6 @@ function displayThreeProducts() {
 
         //increment times user votes for an item
         if (userChoice[clickedProduct]) {
-            //userChoice[clickedProduct]++;
         }
         else {
             userChoice[clickedProduct] = 1;
@@ -125,20 +124,6 @@ function displayThreeProducts() {
     }
 }
 
-// function findById(array, id) {
-//     let foundArrayItem;
-//     // loops through the cart array
-//     for (let i = 0; i < array.length; i++) {
-//         const arrayItem = array[i];
-//         // returns first item that has an .id property that matches the passed in id.
-//         if (arrayItem.id === id) {
-//             foundArrayItem = arrayItem;
-//         }
-//     }
-//     return foundArrayItem;
-//     // returns null if no answer is found
-// }
-
 //Submit Selection button event listener
 button.addEventListener('click', displayThreeProducts);
 
@@ -147,9 +132,3 @@ displayThreeProducts();
 // 3 new non-duplicating images should load automatically after each click (this part is done)
     // STRETCH to be sure no images duplicate with any that came immediately before.  
         // layer this in after first part is working
-
-// STRETCH to include all sessions stored in local storage to display all time results
-    // make all time results a seperate page that:
-        // Retrieves the all-time results (all sessions) from localStorage
-        // Iterates through the session results and creates grand totals
-        // Displays list of all-time results
